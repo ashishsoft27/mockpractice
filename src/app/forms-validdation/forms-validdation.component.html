@@ -1,0 +1,68 @@
+<p>forms-validdation works!</p>
+<div class="container w-50 shadow mt-5">
+    <div class="row">
+        <form name="valForm" #valForm="ngForm">
+            <div class="mb-3">
+                <label for="firstName" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="firstName" name="fname" #fname="ngModel" ngModel   required
+                    minlength="6" pattern="[A-Za-z]{6,6}">
+                <!-- <div>{{fname.errors | json}}</div> -->
+                <!-- <div><span>invalid</span>{{fname.invalid}}</div>
+              <div><span>touched</span>{{fname.touched}}</div> -->
+                <!-- <div *ngIf="fname.invalid && fname.touched"> -->
+                <div *ngIf="valForm.submitted">
+                    <div *ngIf="fname.errors?.['required']">
+                        It's Required field
+                    </div>
+                    <div *ngIf="fname.errors?.['minlength']">
+                        minlength 6 required
+                    </div>
+                    <div *ngIf="fname.errors?.['pattern']">
+                        please enter valid user name
+                    </div>
+                </div>
+
+            </div>
+            <div class="mb-3">
+                <label for="lastName" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="lastName" name="lname" #lname="ngModel" ngModel required minlength="6" pattern="[A-Za-z]{6,6}">
+                <div *ngIf="valForm.submitted">
+                    <div *ngIf="lname.errors?.['required']">
+                        It's Required field
+                    </div>
+                    <div *ngIf="lname.errors?.['minlength']">
+                        minlength 6 required
+                    </div>
+                    <div *ngIf="lname.errors?.['pattern']">
+                        please enter valid last name
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3 ">
+                <label for="MobileNo" class="form-label">Mobile No</label>
+                <input type="text" class="form-control" id="mobno" name="mobno" #mobno="ngModel"  ngModel required minlength="10" maxlength="10" pattern="[0-9]{10,10}">
+                <div *ngIf="valForm.submitted">
+                    <div *ngIf="mobno.errors?.['required']">
+                        It's Required field
+                    </div>
+                    <div *ngIf="mobno.errors?.['minlength']">
+                        minlength 10 required
+                    </div>
+                    <div *ngIf="mobno.errors?.['pattern']">
+                        please enter valid mobile no
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <div>
+            <div><span>values</span>{{valForm.value | json}}</div>
+            <div><span>Invalid</span>{{valForm.invalid}}</div>
+            <div><span>Valid</span>{{valForm.valid}}</div>
+            <div><span>Pristine</span>{{valForm.pristine}}</div>
+            <div><span>Dirty</span>{{valForm.dirty}}</div>
+            <div><span>Touced</span>{{valForm.touched}}</div>
+            <div><span>Untouched</span>{{valForm.untouched}}</div>
+        </div>
+    </div>
+</div>

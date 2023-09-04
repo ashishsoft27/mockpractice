@@ -1,0 +1,34 @@
+<div class="container w-50 shadow mt-5">
+    <div class="row">
+        <div class="col-12">
+            <h5 class="m-1"><u>User Registration Form</u></h5>
+
+            <form class="p-2" #registrationForm="ngForm" (ngSubmit)="save(registrationForm)">
+                <div class="mb-3">
+                    <label for="id1" class="form-label">Full Name</label>
+                    <input type="email" class="form-control" id="id1" name="fName" ngModel required>
+                </div>
+                <div class="mb-3">
+                    <label for="id2" class="form-label">Mobile</label>
+                    <input type="text" class="form-control" id="id2" name="mobno" ngModel required appMobValidation>
+                </div>
+                <div class="mb-3">
+                    <label for="id3" class="form-label">Email</label>
+                    <input type="text" class="form-control" id="id3" name="email" ngModel>
+                </div>
+                <button type="submit" [disabled]="registrationForm.invalid" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="alert alert-danger" *ngIf="registrationForm.invalid">
+       Please fill all the required fileds
+      </div>
+    <div class="mt-4">
+       <div class="m-1"><span class="fw-bold">Value </span>: {{registrationForm.value | json}}</div>
+       <div class="m-1"><span class="fw-bold">Valid:&nbsp;</span> {{registrationForm.valid}}</div>
+       <div class="m-1"><span class="fw-bold">Invalid</span>:&nbsp;{{registrationForm.invalid}}</div>
+       <div class="m-1"><span class="fw-bold">Dirty</span>:&nbsp;{{registrationForm.dirty}}</div>
+       <div class="m-1"><span class="fw-bold">Pristine</span>:&nbsp;{{registrationForm.pristine}}</div>
+    </div>
+</div>
+

@@ -1,0 +1,81 @@
+<p>third-form works!</p>
+<p>second-form works!</p>
+<div class="container w-50 shadow mt-5">
+    <div class="row">
+        <div class="col-12">
+            <form class="p-2" action="" #regform="ngForm" (ngSubmit)="save(regform)">
+
+                <div class="mb-3">
+                    <label for="first-name" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="fname" name="fname" #fname="ngModel" [(ngModel)]="obj.fname" required minlength="2" pattern="[a-zA-z]{2,2}">
+                    <!-- <div class="m-1"><span class="fw-bold">Values</span>{{fname.errors | json}}</div> -->
+
+                    <div *ngIf="fname.invalid || fname.touched">
+                        
+                    <!-- <div *ngIf="regform.submitted"> -->
+                        <div *ngIf="fname.errors?.['required']">
+                            its required
+                        </div>
+                        <div *ngIf="fname.errors?.['minlength']">
+                            Minimum 2 character are required
+                        </div>
+                        <div  *ngIf="fname.errors?.['pattern']">
+                            please enter valid fullname.
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="lname" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="lname" name="lname" [(ngModel)]="obj.lname" required>
+                </div>
+                <div class="mb-3">
+                    <label for="mobno" class="form-label">Mobile no</label>
+                    <input type="text" class="form-control" id="mobno" name="mobno" [(ngModel)]="obj.mobno" required>
+                </div>
+                <button type="submit" [disabled]="regform.invalid">submit</button>
+
+            </form>
+        </div>
+        <div class="m-1"><span class="fw-bold">Values</span>{{fname.errors | json}}</div>
+        <div class="m-1"><span class="fw-bold">Values</span>{{regform.value | json}}</div>
+        <div class="m-1"><span class="fw-bold">Valid&nbsp;&nbsp;</span>{{regform.valid }}</div>
+        <div class="m-1"><span class="fw-bold">Invalid&nbsp;&nbsp;</span>{{regform.invalid}}</div>
+        <div class="m-1"><span class="fw-bold">Pristine&nbsp;&nbsp;</span>{{regform.pristine}}</div>
+        <div class="m-1"><span class="fw-bold">Dirty&nbsp;&nbsp;</span>{{regform.dirty}}</div>
+
+    </div>
+</div>
+
+
+
+<!-- <div class="mb-3">
+    <label for="first-name" class="form-label">First Name</label>
+    <input type="text" class="form-control" id="fnameId" name="fname" #fname="ngModel" ngModel required>
+    <div class="m-1"><span class="fw-bold">Values</span>{{fname.value | json}}</div>
+    <div class="m-1"><span class="fw-bold">Valid&nbsp;&nbsp;</span>{{fname.valid }}</div>
+    <div class="m-1"><span class="fw-bold">Invalid&nbsp;&nbsp;</span>{{fname.invalid}}</div>
+    <div class="m-1"><span class="fw-bold">Pristine&nbsp;&nbsp;</span>{{fname.pristine}}</div>
+    <div class="m-1"><span class="fw-bold">Dirty&nbsp;&nbsp;</span>{{fname.dirty}}</div>
+    <div class="m-1"><span class="fw-bold">Error&nbsp;&nbsp;</span>{{fname.errors | json}}</div>
+</div> -->
+
+
+<!-- <div class="mb-3">
+    <label for="first-name" class="form-label">First Name</label>
+    <input type="text" class="form-control" id="fnameId" name="fname" #fname="ngModel" ngModel required
+        minlength="2" pattern="[a-zA-z]{2}">
+
+    <div *ngIf="fname.invalid && fname.touched">
+        <div id="validationServer04Feedback" class="invalid-feedback"
+            *ngIf="fname.errors?.['required']">
+            its required
+        </div>
+        <div id="validationServer04Feedback" class="invalid-feedback"
+            *ngIf="fname.errors?.['minlength']">
+            Minimum 2 character are required
+        </div>
+        <div id="validationServer04Feedback" class="invalid-feedback" *ngIf="fname.errors?.['pattern']">
+            please enter valid fullname.
+        </div>
+    </div>
+</div> -->
